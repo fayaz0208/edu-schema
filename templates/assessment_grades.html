@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Assessment and Grades</h1>
+<h2>Create Assessment</h2>
+<form method="POST">
+    <input type="hidden" name="action" value="Create">
+    <label for="course_id">Course ID:</label>
+    <input type="number" id="course_id" name="course_id" required>
+    <label for="assessment_name">Assessment Name:</label>
+    <input type="text" id="assessment_name" name="assessment_name" required>
+    <label for="assessment_type">Assessment Type:</label>
+    <input type="text" id="assessment_type" name="assessment_type" required>
+    <label for="max_score">Max Score:</label>
+    <input type="number" id="max_score" name="max_score" required>
+    <button type="submit">Create Assessment</button>
+</form>
+
+<h2>Input Grade</h2>
+<form method="POST">
+    <input type="hidden" name="action" value="Input">
+    <label for="student_id">Student ID:</label>
+    <input type="number" id="student_id" name="student_id" required>
+    <label for="assessment_id">Assessment ID:</label>
+    <input type="number" id="assessment_id" name="assessment_id" required>
+    <label for="score">Score:</label>
+    <input type="number" id="score" name="score" required>
+    <label for="graded_date">Graded Date (YYYY-MM-DD):</label>
+    <input type="date" id="graded_date" name="graded_date" required>
+    <button type="submit">Input Grade</button>
+</form>
+
+<h2>Assessments List</h2>
+<ul>
+    {% for assessment in assessments %}
+    <li>ID: {{ assessment[0] }}, Course ID: {{ assessment[1] }}, Name: {{ assessment[2] }}, Type: {{ assessment[3] }}, Max Score: {{ assessment[4] }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Grades List</h2>
+<ul>
+    {% for grade in grades %}
+    <li>Student ID: {{ grade[0] }}, Assessment ID: {{ grade[1] }}, Score: {{ grade[2] }}, Graded Date: {{ grade[3] }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

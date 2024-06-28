@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Instructor Management</h1>
+<form method="POST">
+    <input type="hidden" name="action" value="Add">
+    <label for="first_name">First Name:</label>
+    <input type="text" id="first_name" name="first_name" required>
+    <label for="last_name">Last Name:</label>
+    <input type="text" id="last_name" name="last_name" required>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <label for="bio">Bio:</label>
+    <textarea id="bio" name="bio" required></textarea>
+    <button type="submit">Add Instructor</button>
+</form>
+
+<h2>Update or Remove Instructor</h2>
+<form method="POST">
+    <input type="hidden" name="action" value="Update">
+    <label for="instructor_id">Instructor ID:</label>
+    <input type="number" id="instructor_id" name="instructor_id" required>
+    <label for="first_name">First Name:</label>
+    <input type="text" id="first_name" name="first_name" required>
+    <label for="last_name">Last Name:</label>
+    <input type="text" id="last_name" name="last_name" required>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <label for="bio">Bio:</label>
+    <textarea id="bio" name="bio" required></textarea>
+    <button type="submit">Update Instructor</button>
+</form>
+<form method="POST">
+    <input type="hidden" name="action" value="Remove">
+    <label for="instructor_id">Instructor ID:</label>
+    <input type="number" id="instructor_id" name="instructor_id" required>
+    <button type="submit">Remove Instructor</button>
+</form>
+
+<h2>Instructors List</h2>
+<ul>
+    {% for instructor in instructors %}
+    <li>ID: {{ instructor[0] }}, Name: {{ instructor[1] }} {{ instructor[2] }}, Email: {{ instructor[3] }}, Bio: {{ instructor[4] }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
